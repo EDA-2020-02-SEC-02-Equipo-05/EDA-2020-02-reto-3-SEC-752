@@ -1,4 +1,4 @@
-LABORATORIO 7
+RETO  03
 
 
 Realizado por la sección 752 del curso Estructuras de Datos y Algoritmos de la Universidad de los Andes.
