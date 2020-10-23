@@ -51,6 +51,7 @@ def printMenu():
     print("1- Inicializar Analizador")
     print("2- Cargar información de accidentes")
     print("3- Buscar accidentes dentro de un rango de fechas")
+    print("4- Conocer los accidentes anteriores a una fecha")
     print("0- Salir")
     print("*******************************************")
 
@@ -81,10 +82,25 @@ while True:
     elif int(inputs[0]) == 3:
         t1_start = process_time()
         print("\nBuscando accidentes en un rango de fechas: ")
-        initialDate = input("Rango Inicial (YYYY-MM-DD): ")
+        InitialDate = input("Rango Inicial (YYYY-MM-DD): ")
         finalDate = input("Rango Final (YYYY-MM-DD): ")
-        total = controller.getAccidentsByRange(cont, initialDate, finalDate)
-        print("\nTotal de accidentes en el rango de fechas: " + str(total))
+        tot = controller.getAccidentsByRange(cont, InitialDate, finalDate)
+        print("\nTotal de accidentes en el rango de fechas: " + str(tot))
+        print('Tiempo de ejecución ', process_time() - t1_start, ' segundos')
+
+    elif int(inputs[0]) == 4:
+        t1_start = process_time()
+        cont = controller.init()
+        print("\nBuscando accidentes en un rango de fechas: ")
+        Y = input('Ingrese el año en formato(YYYY): ')
+        M = input('Ingrese el mes en formato(MM): ')
+        D = input ('Ingrese el dia en formato(DD): ')
+        finalDate = (Y+'/'+M+'/'+D)
+        start = str(controller.minKey(cont))
+        InitialDate = initial.split(" ")[0]
+        tot,greater = controller.getAccidentsBeforeDate(cont, InitialDate, finalDate)
+        print('\n' + 'El numero de accidentes registrados antes de'+Y+'/'+M+'/'+D+ 'fueron: ' + str(tot))
+        print('El mayor número de accidentes se dio en la fecha: '+greater)
         print('Tiempo de ejecución ', process_time() - t1_start, ' segundos')
 
     else:
