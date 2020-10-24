@@ -43,8 +43,6 @@ accidentfile = 'us_accidents_small.csv'
 #  Menu principal
 # ___________________________________________________
 
-def printAccidentsByHour(analyzer, minkey, maxkey)
-
 
 def printMenu():
     print("\n")
