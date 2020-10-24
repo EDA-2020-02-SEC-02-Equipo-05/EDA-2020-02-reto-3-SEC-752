@@ -204,6 +204,33 @@ def getAccidentsBeforeDate(analyzer, initialDate):
     incidents = om.values(org, leastDate, initialDate)
     return incidents
 
+def getAccidentsByHour(analyzer, maxkey, minkey):
+
+    hRange = om.values(analyzer["hourIndex"], maxkey, minkey)
+    iterator = it.newIterator(hRange)
+    tot = 0
+    Severity1 = 0
+    Severity2 = 0
+    Severity3 = 0 
+    Severity4 = 0
+    while it.hasNext(iterator):
+        hour = it.next(iterator)
+        for severity in range(1,5):
+            severityEntry = m.get(hour["severityIndex"],severity)
+            if severityEntry is not None:
+                severity = me.getValue(severityEntry)
+                size = lt.size(severity["lstSeverities"])
+                if severity == 1:
+                    Severity1 = Severity1+size
+                elif severity == 2:
+                    Severity2 = Severity2+size
+                elif severity == 3:
+                    Severity3 = Severity3+size
+                else:
+                    Severity4 = Severity4+size
+                tot = Severity1 + Severity2 + Severity3 + Severity4
+    return Severity1, Severity2, Severity3, Severity4, tot
+
 # ==============================
 # Funciones de Comparacion
 # ==============================
