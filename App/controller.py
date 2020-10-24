@@ -23,6 +23,11 @@
 import config as cf
 from App import model
 import datetime
+from DISClib.ADT import map as m
+from DISClib.DataStructures import mapentry as me
+from DISClib.ADT import orderedmap as om
+from DISClib.ADT import list as lt
+from DISClib.DataStructures import listiterator as it
 import csv
 
 """
@@ -129,3 +134,11 @@ def getAccidentsBeforeDate(analyzer, initialDate):
         return model.getAccidentsBeforeDate(analyzer, initialDate.date())      
     except:
         return None
+        
+        
+    def getAccidentsByHour(analyzer, maxkey, minkey):
+    """
+    Llama a la funcion en el model para encontrar los accidentes un una hora especifica.
+    """
+    return model.getAccidentsByHour(analyzer, maxkey, minkey)
+
