@@ -52,6 +52,7 @@ def printMenu():
     print("2- Cargar información de accidentes")
     print("3- Buscar accidentes dentro de un rango de fechas")
     print("4- Conocer los accidentes anteriores a una fecha")
+    print("5- Conocer los accidentes en rango de horas")
     print("0- Salir")
     print("*******************************************")
 
@@ -101,6 +102,14 @@ while True:
         tot,greater = controller.getAccidentsBeforeDate(cont, InitialDate, finalDate)
         print('\n' + 'El numero de accidentes registrados antes de'+Y+'/'+M+'/'+D+ 'fueron: ' + str(tot))
         print('El mayor número de accidentes se dio en la fecha: '+greater)
+        print('Tiempo de ejecución ', process_time() - t1_start, ' segundos')
+    elif int(inputs[0]) == 5:
+        t1_start = process_time()
+        print("\nBuscando accidentes en un rango de horas: ")
+        InitialHour = input("Hora Inicial (H;M): ")
+        finalHour = input("Hora Final (H:M): ")
+        tot = controller.getAccidentsByHour(cont, InitialHour, finalHour)
+        print("\nEl total de accidentes en el rango dado es: " + str(tot))
         print('Tiempo de ejecución ', process_time() - t1_start, ' segundos')
 
     else:
