@@ -97,7 +97,7 @@ while True:
         D = input ('Ingrese el dia en formato(DD): ')
         finalDate = (Y+'/'+M+'/'+D)
         start = str(controller.minKey(cont))
-        InitialDate = initial.split(" ")[0]
+        InitialDate = start.split(" ")[0]
         tot,greater = controller.getAccidentsBeforeDate(cont, InitialDate, finalDate)
         print('\n' + 'El numero de accidentes registrados antes de'+Y+'/'+M+'/'+D+ 'fueron: ' + str(tot))
         print('El mayor número de accidentes se dio en la fecha: '+greater)
