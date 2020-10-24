@@ -121,3 +121,11 @@ def getAccidentsBySeverity(analyzer, initialDate,
     initialDate = datetime.datetime.strptime(initialDate, '%Y-%m-%d')
     return model.getCrimesBySeverity(analyzer, initialDate.date(),
                                       severity)
+
+def getAccidentsBeforeDate(analyzer, initialDate):
+
+    try:
+        initialDate = datetime.datetime.striptime(initialDate, '%Y-%m-%d') 
+        return model.getAccidentsBeforeDate(analyzer, initialDate.date())      
+    except:
+        return None

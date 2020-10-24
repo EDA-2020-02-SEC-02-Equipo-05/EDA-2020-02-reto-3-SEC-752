@@ -195,6 +195,15 @@ def getAccidentsBySeverity(analyzer, initialDate, offensecode):
             return m.size(me.getValue(numseverities)['lstseverities'])
         return 0
 
+def getAccidentsBeforeDate(analyzer, initialDate):
+    """
+    Obtiene el numero de incidentes ocurridos antes de cierta fecha
+    """
+    org = analyzer["DateIndex"]
+    leastDate = om.minKey(org)
+    incidents = om.values(org, leastDate, initialDate)
+    return incidents
+
 # ==============================
 # Funciones de Comparacion
 # ==============================
